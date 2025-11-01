@@ -1,0 +1,33 @@
+# Maven build output
+target/
+
+# Logs
+*.log
+
+# IDE and workspace files
+.idea/
+*.iml
+.vscode/
+.shelf/
+workspace.xml
+mavenHomeManager.xml
+
+# Eclipse files (if opened there)
+.project
+.classpath
+.settings/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Local environment secrets
+.env
+
+# Keep main project files
+!src/
+!pom.xml
+!Dockerfile
+!docker-compose.yml
+!README.md
+!.github/
