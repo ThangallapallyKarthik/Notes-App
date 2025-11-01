@@ -1,34 +1,33 @@
-version: "3.9"
+version: "3.8"
 services:
   postgres:
     image: postgres:16
+    container_name: notes-postgres
+    restart: always
     environment:
-      POSTGRES_DB: notes
-      POSTGRES_USER: notes
-      POSTGRES_PASSWORD: notes
+      POSTGRES_DB: notes_db
+      POSTGRES_USER: notes_user
+      POSTGRES_PASSWORD: notes_pass_123
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U notes -d notes"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
 
-  notes-app:
+  app:
     build: .
+    container_name: notes-app
+    restart: always
     depends_on:
-      postgres:
-        condition: service_healthy
+      - postgres
     environment:
-      SPRING_PROFILES_ACTIVE: prod
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/notes
-      SPRING_DATASOURCE_USERNAME: notes
-      SPRING_DATASOURCE_PASSWORD: notes
-      APP_JWT_SECRET: "change-this-to-a-long-random-secret-32+chars"
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/notes_db
+      SPRING_DATASOURCE_USERNAME: notes_user
+      SPRING_DATASOURCE_PASSWORD: notes_pass_123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      APP_JWT_SECRET: sample-jwt-secret-1234567890
+      SERVER_PORT: 8080
     ports:
-      - "8081:8081"
+      - "8081:8080"
 
 volumes:
   pgdata:

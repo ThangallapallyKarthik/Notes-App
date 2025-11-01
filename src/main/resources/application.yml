@@ -1,13 +1,21 @@
-spring:
-  application:
-    name: notes-backend
-  profiles:
-    active: dev
-
 server:
-  port: 8088
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://dpg-abcd1234-p12345.render.com:5432/notes_db
+    username: notes_user
+    password: notes_pass_123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 app:
   jwt:
-    secret: "replace-with-a-very-long-32+char-secret-for-jwt-signing-please-change"
-    expirationSeconds: 86400
+    secret: sample-jwt-secret-1234567890
