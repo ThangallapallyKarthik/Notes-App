@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: notes-backend
+  profiles:
+    active: dev
+
+server:
+  port: 8088
+
+app:
+  jwt:
+    secret: "replace-with-a-very-long-32+char-secret-for-jwt-signing-please-change"
+    expirationSeconds: 86400
