@@ -10,7 +10,7 @@ spring:
   jpa:
     hibernate:
       # CRITICAL: Change 'update' for production. Use 'validate' or 'none'.
-      ddl-auto: validate
+      ddl-auto: update
     # Optional: Set to false for better performance in production
     show-sql: false
     properties:
