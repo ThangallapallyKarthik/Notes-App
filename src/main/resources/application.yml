@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: ${PORT:8087}
 
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-abcd1234-p12345.render.com:5432/notes_db
-    username: notes_user
-    password: notes_pass_123
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -18,4 +18,4 @@ spring:
 
 app:
   jwt:
-    secret: sample-jwt-secret-1234567890
+    secret: ${JWT_SECRET}

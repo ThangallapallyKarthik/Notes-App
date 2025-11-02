@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Your Notes | Notes App</title>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <!-- ✅ Define backend base URL globally -->
+    <script>
+        const BASE_URL = "http://localhost:8087";
+    </script>
+
+    <!-- ✅ Load scripts -->
+    <script src="scripts/auth.js" defer></script>
+    <script src="scripts/notes.js" defer></script>
+</head>
+<body>
+<div class="navbar">
+    <h1>Notes App</h1>
+    <div>
+        <button id="themeToggle" class="btn">🌙 Dark</button>
+        <a href="#" onclick="logout()" class="btn">Logout</a>
+    </div>
+</div>
+
+<div class="topbar">
+    <div class="left">
+        <strong>Notes</strong>
+        <input id="searchInput" type="text" placeholder="Search by title or content…"/>
+        <select id="colorFilter">
+            <option value="">All colors</option>
+            <option value="#FFD166">Yellow</option>
+            <option value="#06D6A0">Green</option>
+            <option value="#118AB2">Blue</option>
+            <option value="#EF476F">Pink</option>
+            <option value="#8338EC">Purple</option>
+        </select>
+        <button id="refreshBtn">Reload</button>
+        <span id="statusText" class="badge">Ready</span>
+    </div>
+</div>
+
+<div class="loader" id="loader">
+    <div class="spinner"></div><span>Loading…</span>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="title">New note</div>
+        <div class="row">
+            <input id="noteTitle" type="text" placeholder="Title"/>
+            <select id="noteColor">
+                <option value="#FFD166">Yellow</option>
+                <option value="#06D6A0">Green</option>
+                <option value="#118AB2">Blue</option>
+                <option value="#EF476F">Pink</option>
+                <option value="#8338EC">Purple</option>
+            </select>
+        </div>
+        <div class="row">
+            <textarea id="noteContent" placeholder="Write your note…"></textarea>
+        </div>
+        <div class="row" style="justify-content:flex-end">
+            <button id="createBtn" class="primary">Add note</button>
+            <button id="clearBtn">Clear</button>
+        </div>
+        <pre id="createResult" class="badge" style="margin-top:8px;background:#fff"></pre>
+    </div>
+
+    <div class="row" style="align-items:center;justify-content:space-between;margin-top:24px">
+        <div class="title">Your notes</div>
+        <div class="meta" id="countText"></div>
+    </div>
+
+    <div id="notesGrid" class="grid"></div>
+    <div id="emptyState" class="empty">No notes yet. Create one above!</div>
+</div>
+
+<div class="toast" id="toast"></div>
+</body>
+</html>

@@ -1,3 +1,13 @@
 package com.yourcompany.notes.dto;
-import lombok.AllArgsConstructor; import lombok.Data;
-@Data @AllArgsConstructor public class AuthResponse { private String message; private String token; }
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class AuthResponse {
+    private String message;
+    private String token;
+}

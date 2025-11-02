@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Notes App</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+        const BASE_URL = "http://localhost:8087";
+    </script>
+
+    <script src="scripts/auth.js" defer></script>
+</head>
+<body>
+<div class="form-container">
+    <h2>Login</h2>
+    <form onsubmit="event.preventDefault(); login();">
+        <input id="email" type="email" placeholder="Email" required />
+        <input id="password" type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+    </form>
+    <pre id="loginResult" class="result-box"></pre>
+    <p>Don't have an account? <a href="register.html">Register</a></p>
+</div>
+</body>
+</html>

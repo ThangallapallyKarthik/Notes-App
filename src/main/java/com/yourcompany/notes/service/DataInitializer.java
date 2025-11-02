@@ -7,20 +7,21 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-@Component @RequiredArgsConstructor
+@Component
+@RequiredArgsConstructor
 public class DataInitializer implements CommandLineRunner {
-  private final UserRepository users;
-  private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    private final UserRepository users;
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-  @Override
-  public void run(String... args) {
-    users.findByEmail("demo@user.com").orElseGet(() ->
-      users.save(User.builder()
-        .name("Demo User")
-        .email("demo@user.com")
-        .password(encoder.encode("Demo@123"))
-        .googleAccount(false)
-        .build())
-    );
-  }
+    @Override
+    public void run(String... args) {
+        users.findByEmail("demo@user.com").orElseGet(() ->
+                users.save(User.builder()
+                        .name("Demo User")
+                        .email("demo@user.com")
+                        .password(encoder.encode("Demo@123"))
+                        .googleAccount(false)
+                        .build())
+        );
+    }
 }

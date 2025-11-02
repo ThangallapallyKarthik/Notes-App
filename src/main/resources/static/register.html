@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Notes App</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+        const BASE_URL = "http://localhost:8087";
+    </script>
+
+    <script src="scripts/auth.js" defer></script>
+</head>
+<body>
+<div class="form-container">
+    <h2>Create Account</h2>
+    <form onsubmit="event.preventDefault(); register();">
+        <input id="name" type="text" placeholder="Name" required />
+        <input id="email" type="email" placeholder="Email" required />ye
+        <input id="password" type="password" placeholder="Password" required />
+        <button type="submit">Register</button>
+    </form>
+    <pre id="registerResult" class="result-box"></pre>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+</div>
+</body>
+</html>
