@@ -1,21 +1,29 @@
-server:
-  port: ${PORT:8087}
-
 spring:
+  # --- DATASOURCE CONFIGURATION ---
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
+  # --- JPA/HIBERNATE CONFIGURATION ---
   jpa:
     hibernate:
-      ddl-auto: update
-    show-sql: true
+      # CRITICAL: Change 'update' for production. Use 'validate' or 'none'.
+      ddl-auto: validate
+    # Optional: Set to false for better performance in production
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
+# --- SERVER CONFIGURATION ---
+server:
+  # CRITICAL: Render exposes the service on the $PORT environment variable.
+  # Using the default 8080 (which Render maps internally) is safer than 8087.
+  port: ${PORT:8080}
+
+# --- APPLICATION-SPECIFIC CONFIGURATION ---
 app:
   jwt:
     secret: ${JWT_SECRET}
