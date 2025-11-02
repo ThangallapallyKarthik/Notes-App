@@ -8,8 +8,11 @@
 
     <!-- ✅ Define backend base URL globally -->
     <script>
-        const BASE_URL = "http://localhost:8087";
+        const BASE_URL = window.location.hostname.includes("localhost")
+          ? "http://localhost:8087"
+          : "https://notes-app-urxo.onrender.com";
     </script>
+
 
     <!-- ✅ Load scripts -->
     <script src="scripts/auth.js" defer></script>
