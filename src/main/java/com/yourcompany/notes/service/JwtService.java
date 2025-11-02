@@ -14,8 +14,11 @@ public class JwtService {
     private final Key key;
     private final long expirationMs;
 
-    public JwtService(@Value("${app.jwt.secret}") String secret,
-                      @Value("${app.jwt.expirationSeconds}") long expirationSeconds) {
+    // ✅ expirationSeconds is now optional — defaults to 86400 (1 day)
+    public JwtService(
+            @Value("${app.jwt.secret}") String secret,
+            @Value("${app.jwt.expirationSeconds:86400}") long expirationSeconds
+    ) {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
         this.expirationMs = expirationSeconds * 1000L;
     }
@@ -32,6 +35,9 @@ public class JwtService {
     }
 
     public Jws<Claims> parse(String token) {
-        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token);
     }
 }
